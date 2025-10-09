@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timer</title>
+
+    <!-- Бібліотека для того щоб вибрати кінцеву дату і час -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
@@ -13,8 +21,33 @@
         <h1 class="main-title">Timer</h1>
         <a class="back-link" href="./index.html">Go back</a>
       </div>
-    </main>
 
+      <div class="timer-container">
+        <div class="timer-input">
+          <input type="text" id="datetime-picker" />
+          <button type="button" data-start>Start</button>
+        </div>
+
+        <div class="timer">
+          <div class="field">
+            <span class="value" data-days>00</span>
+            <span class="label">Days</span>
+          </div>
+          <div class="field">
+            <span class="value" data-hours>00</span>
+            <span class="label">Hours</span>
+          </div>
+          <div class="field">
+            <span class="value" data-minutes>00</span>
+            <span class="label">Minutes</span>
+          </div>
+          <div class="field">
+            <span class="value" data-seconds>00</span>
+            <span class="label">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </main>
     <script type="module" src="./js/1-timer.js"></script>
   </body>
 </html>

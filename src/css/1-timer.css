@@ -1,0 +1,68 @@
+.timer-container {
+  padding: 36px 156px;
+}
+
+.timer-input {
+  gap: 8px;
+  margin-bottom: 32px;
+  max-width: 355px;
+  width: 100%;
+}
+
+.timer-input input {
+  max-width: 225px;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+button {
+  border-radius: 8px;
+  padding: 8px 16px;
+  background: #4e75ff;
+  border-color: #4e75ff;
+  color: #fff;
+}
+
+button:hover {
+  background: #6c8cff;
+}
+
+button:disabled {
+  background-color: #ccc;
+  color: #666;
+  border-color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.timer,
+.timer-input {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.timer {
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.value {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.label {
+  font-weight: 400;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
