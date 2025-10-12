@@ -8,6 +8,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const input = document.querySelector('#datetime-picker');
 const btnStart = document.querySelector('[data-start]');
+const btnStop = document.querySelector('[data-stop]');
 const timer = document.querySelector('.timer');
 let pickedDays = timer.querySelector('[data-days]');
 let pickedHours = timer.querySelector('[data-hours]');
@@ -15,8 +16,10 @@ let pickedMinutes = timer.querySelector('[data-minutes]');
 let pickedSeconds = timer.querySelector('[data-seconds]');
 
 btnStart.addEventListener('click', handlerStart);
+btnStop.addEventListener('click', handlerStop);
 
 btnStart.disabled = true;
+btnStop.disabled = true;
 let userSelectedDate = null;
 let timerId = null;
 
@@ -47,6 +50,7 @@ flatpickr(input, options);
 function handlerStart() {
   btnStart.disabled = true;
   input.disabled = true;
+  btnStop.disabled = false;
 
   timerId = setInterval(() => {
     const now = Date.now();
@@ -55,13 +59,24 @@ function handlerStart() {
     if (difference <= 0) {
       clearInterval(timerId);
       updateTimerUI({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      input.disabled = false;
-      return;
     }
 
     const time = convertMs(difference);
     updateTimerUI(time);
   }, 1000);
+}
+
+function handlerStop() {
+  input.disabled = false;
+  btnStop.disabled = true;
+
+  clearInterval(timerId);
+
+  input.addEventListener('click', handlerClick);
+}
+
+function handlerClick() {
+  updateTimerUI({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 }
 
 function convertMs(ms) {
@@ -83,7 +98,7 @@ function addZero(value) {
 }
 
 function updateTimerUI({ days, hours, minutes, seconds }) {
-  pickedDays.textContent = days;
+  pickedDays.textContent = addZero(days);
   pickedHours.textContent = addZero(hours);
   pickedMinutes.textContent = addZero(minutes);
   pickedSeconds.textContent = addZero(seconds);
